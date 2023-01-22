@@ -1,16 +1,12 @@
-# This is a sample Python script.
+position = 0
+while True:
+    logs = open('log.log', 'r')
+    logs.seek(position)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    for line in logs:
+        line = device(line)
+        print(line.timestamp())
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    position = logs.tell()
+    logs.close()
+    time.sleep(10)
